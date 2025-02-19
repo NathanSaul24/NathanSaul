@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nathan Saul Portfolio Website</title>
+    <link rel="stylesheet" href="styles.css"><script src="https://kit.fontawesome.com/afcfc84dbe.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="header">
+    <div class="container">
+        <nav>
+            <img src="images/logo.png" class="Logo">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-text">
+            <p>CompSci Programmer/Chef</p>
+            <h1>Hey!, I'm <span>Nathan</span><br>Saul from Wicklow, Ireland</h1>
+        </div>
+    </div>
+</div>
+<!-- --------------About---------------- -->
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="about-column-1">
+                <img src="images/portrait.png">
+            </div>
+            <div class="about-column-2">   
+                <h1 class="sub-title">About Me</h1>
+                <p>I am a passionate and driven computer science student currently pursuing my degree at Technological University Dublin (TUDublin), where I am in my second year of study. My academic journey has equipped me with a strong foundation in various programming languages, including C, Python, HTML, and CSS, as well as hands-on experience in networking, supported by multiple Cisco accreditations.
+
+                    Beyond software, I have a keen interest in the hardware aspect of computing. In my spare time, I enjoy troubleshooting, repairing, and upgrading computer components, which has deepened my understanding of how systems operate at both the software and hardware levels.
+                    
+                    I am eager to continue expanding my knowledge and skills, embracing new challenges in the ever-evolving field of computer science. I am also a part-time chef at Russbourough House and Grounds, and strive to improve my abilities in the kitchen, focusing on food preparation, production and saftey.</p>
+
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('experience')">Education</p>
+                        <p class="tab-links" onclick="opentab('education')">Experience</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>Programming</span><br>C, Java, Python</li>
+                            <li><span>Website Design</span><br>HTML, CSS</li>
+                            <li><span>Hardware</span><br>Technical troubleshooting and repair</li>
+                            <li><span>Culinary</span><br>Knife Skills, HACCP Trained, Food Saftey and preparation</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id ="experience">
+                        <ul>
+                            <li><span>Blessington Community College</span><br>2017-2023</li>
+                            <li><span>TUDublin</span><br>2023-Present</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>Russbourough Cafe</span><br>2022-Present</li>
+                            <li><span></span><br></li>
+                            <li><span></span><br></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- -------------Services----------------   -->
+<div id="Services">
+    <div class="container">
+        <h1 class="sub-title">My Services</h1>
+        <div class="services-list">
+            <div>
+                <i class="fa-solid fa-computer"></i>
+                <h2>Computer Construction</h2>
+                <p>Custom-built computers tailored to your needs and budget. Choose your components or contact me for assistance!</p>
+                <a href="#">Read More</a>
+            </div>
+            <div>
+                <i class="fa-solid fa-code"></i>
+                <h2>Website Design</h2>
+                <p>Build the perfect website for your business! Have a website made for both mobile and desktop devices</p>
+                <a href="#">Read More</a>
+            </div>
+        </div>
+    </div>
+</div>
+    
+
+<script>
+
+    var tablinks = document.getElementsByClassName('tab-links');
+    var tabcontents = document.getElementsByClassName('tab-contents');
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove('active-link');
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove('active-tab');    
+        }
+        event.currentTarget.classList.add('active-link');
+        document.getElementById(tabname).classList.add('active-tab');
+                                             
+    }    
+
+</script>
+
+</body>
+</html>
