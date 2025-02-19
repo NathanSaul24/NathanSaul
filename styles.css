@@ -12,11 +12,7 @@ body{
 #header{
     width : 100%;
     height: 100vh;
-<<<<<<< HEAD
     background-image: url(pictures/backgroundimage.png);
-=======
-    background-image: url(images/backgroundimage.png);
->>>>>>> 444843aa8a102772d48cf0df3703799911193019
     background-size: cover;
     background-position: center;
 }
