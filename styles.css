@@ -12,7 +12,7 @@ body{
 #header{
     width : 100%;
     height: 100vh;
-    background-image: url('https://nathansaul24.github.io/NathanSaul/pictures/backgroundimage.png');
+    background-image: url(pictures/backgroundimage.png);
     background-size: cover;
     background-position: center;
 }
@@ -170,4 +170,23 @@ nav ul li a:hover::after{
 .services-list div:hover{
     background: rgb(255, 87, 88);
     transform: translateY(-10px);
+}
+.portfolio{
+    padding: 50px 0;
+}
+.work-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+}
+.work{
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+.work img{
+    width: 100%;
+    border-radius: 10px;
+    display: block;
 }
