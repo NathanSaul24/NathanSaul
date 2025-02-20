@@ -87,7 +87,7 @@ nav ul li a:hover::after{
     border-radius: 15px;
 }
 .about-column-2{
-    flex-basis: 53%;
+    flex-basis: 43%;
 }
 .sub-title{
     font-size: 60px;
