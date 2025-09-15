@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services • Nathan Saul</title>
+    <link rel="stylesheet" href="styles.css"><script src="https://kit.fontawesome.com/afcfc84dbe.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="header" style="height:auto;background-image:none;background:#080808;">
+    <div class="container">
+        <nav>
+            <img src="pictures/logo.png" class="Logo">
+            <ul>
+                <li><a href="index.html#header">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#portfolio">Portfolio</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-text" style="margin-top: 60px;">
+        </div>
+    </div>
+</div>
+
+<!-- Ticket Modal -->
+<div class="ticket-overlay" id="ticketOverlay" aria-hidden="true">
+    <div class="ticket-modal" role="dialog" aria-modal="true" aria-labelledby="ticketTitle">
+        <button class="ticket-close" id="ticketClose" aria-label="Close">×</button>
+        <h3 id="ticketTitle">Send a quick message</h3>
+        <p class="ticket-sub">I’ll get back to you as soon as I can.</p>
+        <form id="ticketForm" action="https://formspree.io/f/meolwzpk" method="POST">
+            <label for="ticketEmail">Your email</label>
+            <input type="email" id="ticketEmail" name="email" placeholder="you@example.com" required>
+
+            <label for="ticketMessage">Message</label>
+            <textarea id="ticketMessage" name="message" placeholder="How can I help?" rows="5" required></textarea>
+
+            <input type="text" name="_gotcha" style="display:none">
+            <input type="hidden" name="_subject" value="New service inquiry">
+
+            <div class="ticket-actions">
+                <button type="submit" class="btn">Send</button>
+            </div>
+        </form>
+
+    </div>
+    <div class="ticket-backdrop" id="ticketBackdrop"></div>
+</div>
+
+<div id="services-page">
+    <div class="container">
+        <h1 class="sub-title">Computer Services</h1>
+        <div class="services-grid js-reveal reveal reveal-left stagger">
+            <a class="service-card" href="#computer-repair">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                <h3>Computer Repair</h3>
+                <p>Diagnostics, OS issues, upgrades, thermal and performance fixes.</p>
+            </a>
+            <a class="service-card" href="#phone-repair">
+                <i class="fa-solid fa-mobile-screen"></i>
+                <h3>Phone Repair</h3>
+                <p>Screen/battery replacements, software restores, data transfer.</p>
+            </a>
+            <a class="service-card" href="#custom-builds">
+                <i class="fa-solid fa-computer"></i>
+                <h3>Custom Builds</h3>
+                <p>Tailored PC builds for gaming, creative work, or productivity.</p>
+            </a>
+        </div>
+
+        <h2 class="sub-title" style="font-size:42px;margin-top:60px;">Recent Builds</h2>
+        <div class="gallery js-reveal reveal reveal-right">
+            <div class="gallery-item">
+                <img src="pictures/pcpicture2.jpg" alt="PC build placeholder 1">
+            </div>
+            <div class="gallery-item">
+                <img src="pictures/pcpicture1.jpg" alt="PC build placeholder 2">
+            </div>
+            <div class="gallery-item">
+                <img src="pictures/pcpicture3.jpg" alt="PC build placeholder 3">
+            </div>
+        </div>
+
+        <div class="cta js-reveal" style="margin-top:50px;">
+            <a class="btn js-open-ticket" href="#">Get in touch</a>
+        </div>
+    </div>
+</div>
+
+<div id="web-services">
+    <div class="container reveal reveal-left">
+        <h1 class="sub-title">Website Services</h1>
+        <p class="section-intro">Modern, Interactive websites with clean design and great features.</p>
+        <div class="web-services-grid js-reveal reveal stagger">
+            <div class="web-card">
+                <i class="fa-solid fa-laptop-code"></i>
+                <h3>Business Websites</h3>
+                <p>Professional sites tailored to your ideas.</p>
+            </div>
+            <div class="web-card">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <h3>E-commerce</h3>
+                <p>Product catalogs, cart features and more.</p>
+            </div>
+            <div class="web-card">
+                <i class="fa-solid fa-euro-sign"></i>
+                <h3>Affordability</h3>
+                <p>Built around your budget.</p>
+            </div>
+        </div>
+        <div class="cta js-reveal" style="margin-top:28px;">
+            <a class="btn js-open-ticket" href="#">Get in touch</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Scroll reveal reuse
+    const revealItems = document.querySelectorAll('.js-reveal, .reveal');
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                } else {
+                    entry.target.classList.remove('in-view');
+                }
+            });
+        }, { threshold: 0.2 });
+        revealItems.forEach(el => observer.observe(el));
+    } else {
+        revealItems.forEach(el => el.classList.add('in-view'));
+    }
+
+    // Ticket modal logic
+    const openTicketBtns = document.querySelectorAll('.js-open-ticket');
+    const overlay = document.getElementById('ticketOverlay');
+    const closeBtn = document.getElementById('ticketClose');
+    const backdrop = document.getElementById('ticketBackdrop');
+    const form = document.getElementById('ticketForm');
+    const emailInput = document.getElementById('ticketEmail');
+    const messageInput = document.getElementById('ticketMessage');
+
+    function openModal(){
+        overlay.setAttribute('aria-hidden', 'false');
+        overlay.classList.add('open');
+        setTimeout(() => emailInput && emailInput.focus(), 50);
+    }
+    function closeModal(){
+        overlay.classList.remove('open');
+        overlay.setAttribute('aria-hidden', 'true');
+        if(form){ form.reset(); }
+    }
+    openTicketBtns.forEach(btn => btn.addEventListener('click', (e)=>{ e.preventDefault(); openModal(); }));
+    closeBtn && closeBtn.addEventListener('click', closeModal);
+    // Disable closing via backdrop click or Escape per requirements
+    // backdrop && backdrop.addEventListener('click', closeModal);
+    // document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
+
+    // Formspree: let browser submit normally; after submission, reset and close
+    form && form.addEventListener('submit', ()=>{
+        setTimeout(()=>{ closeModal(); }, 50);
+    });
+</script>
+</body>
+</html>
