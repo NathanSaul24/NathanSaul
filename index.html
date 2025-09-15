@@ -213,15 +213,18 @@
     const nav = document.querySelector('nav');
     const toggleBtn = document.querySelector('.menu-toggle');
     const navLinks = document.querySelectorAll('nav ul li a');
+    const bodyEl = document.body;
     if(toggleBtn){
         toggleBtn.addEventListener('click', () => {
             const isOpen = nav.classList.toggle('open');
             toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            bodyEl.classList.toggle('menu-open', isOpen);
         });
         navLinks.forEach(a => a.addEventListener('click', () => {
             if(nav.classList.contains('open')){
                 nav.classList.remove('open');
                 toggleBtn.setAttribute('aria-expanded', 'false');
+                bodyEl.classList.remove('menu-open');
             }
         }));
     }

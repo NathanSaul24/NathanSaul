@@ -17,6 +17,8 @@ img, video{ max-width: 100%; height: auto; display: block; }
 svg{ height: auto; }
 /* Prevent accidental horizontal scroll on small screens */
 body{ overflow-x: hidden; }
+/* Lock scrolling when menu is open */
+body.menu-open{ overflow: hidden; }
 /* --------- Scroll reveal base --------- */
 .reveal{
     opacity: 0;
@@ -441,12 +443,26 @@ nav ul li a:hover::after{
     .header-text h1{ font-size: 36px; }
     .header-text h1 span{ font-size: 36px; }
 
-    /* Mobile nav: toggleable menu */
-    .menu-toggle{ display: inline-flex; }
-    nav{ flex-wrap: nowrap; gap: 10px; }
-    nav ul{ display: none; width: 100%; margin-top: 8px; }
-    nav.open ul{ display: block; }
-    nav ul li{ display: block; margin: 10px 0; }
+    /* Mobile nav: off-canvas from the right */
+    nav{ position: relative; flex-wrap: nowrap; gap: 10px; }
+    .menu-toggle{ display: inline-flex; position: absolute; right: 10px; top: 10px; z-index: 1001; }
+    nav ul{
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100dvh;
+        width: 260px;
+        background: #101010;
+        border-left: 1px solid #222;
+        padding: 80px 20px 20px;
+        margin: 0;
+        transform: translateX(100%);
+        transition: transform .3s ease;
+        z-index: 1000;
+        display: block;
+    }
+    nav.open ul{ transform: translateX(0); }
+    nav ul li{ display: block; margin: 14px 0; }
     nav ul li a{ font-size: 18px; }
 
     /* About section stacks columns */
