@@ -12,6 +12,11 @@ body{
 html{
     scroll-behavior: smooth;
 }
+/* Make media and layout elements fluid by default */
+img, video{ max-width: 100%; height: auto; display: block; }
+svg{ height: auto; }
+/* Prevent accidental horizontal scroll on small screens */
+body{ overflow-x: hidden; }
 /* --------- Scroll reveal base --------- */
 .reveal{
     opacity: 0;
@@ -405,6 +410,43 @@ nav ul li a:hover::after{
     .projects{
         grid-template-columns: 1fr;
     }
+}
+
+/* ---------- Global mobile adjustments ---------- */
+@media (max-width: 700px){
+    /* Tweak base sizing and spacing for readability */
+    body{ font-size: 16px; }
+    .container{ padding: 10px 6%; }
+    .Logo{ width: 180px; }
+
+    /* Header text scales down */
+    .header-text{ margin-top: 28%; font-size: 20px; }
+    .header-text h1{ font-size: 36px; }
+    .header-text h1 span{ font-size: 36px; }
+
+    /* Stack nav vertically for simple mobile layout */
+    nav{ flex-direction: column; align-items: flex-start; gap: 8px; }
+    nav ul{ width: 100%; }
+    nav ul li{ margin: 8px 10px 0 0; }
+    nav ul li a{ font-size: 18px; }
+
+    /* About section stacks columns */
+    .row{ flex-direction: column; gap: 20px; }
+    .about-column-1, .about-column-2{ flex-basis: 100%; }
+    .about-column-1 img{ width: 100%; }
+    .sub-title{ font-size: 36px; }
+    .tab-links{ font-size: 20px; margin-right: 20px; }
+
+    /* Services cards already auto-fit; just reduce paddings a bit */
+    .services-list{ grid-gap: 20px; }
+    .services-list div{ padding: 24px; }
+
+    /* Project cards: single column already handled; adjust media height */
+    .project-media{ height: 150px; }
+
+    /* Contact section spacing */
+    #contact{ padding: 50px 0 70px; }
+    .contact-content{ padding: 22px; }
 }
 
 /* -----------------Services page---------------- */
