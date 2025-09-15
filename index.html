@@ -13,7 +13,7 @@
         <nav>
             <img src="pictures/logo.png" class="Logo">
             <ul>
-                <li><a href="#home">Home</a></li>
+                <li><a href="#header">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
@@ -72,7 +72,7 @@
         </div>
     </div>
 <!-- -------------Services----------------   -->
-<div id="Services">
+<div id="services">
     <div class="container">
         <h1 class="sub-title">My Services</h1>
         <div class="services-list">
@@ -91,20 +91,70 @@
         </div>
     </div>
 </div>
-<!-- ------------Portfolio---------------- -->
+<!-- ------------Projects---------------- -->
  <div id="portfolio">
     <div class="container">
-        <h1 class="sub-title">My Work</h1>
-        <div class="work-list">
-            <div class="work">
-                <img src="pictures/work1.jpg">
-            </div>
-            <div class="work">
-                <img src="pictures/work2.jpg">
-            </div>
-            <div class="work">
-                <img src="pictures/work3.jpg">
-            </div>
+        <h1 class="sub-title">Projects</h1>
+        <div class="projects">
+            <article class="project-card js-reveal">
+                <span class="project-glow"></span>
+                <div class="project-media">
+                    <img src="pictures/machinelearningcover.png" alt="ML Probability Engine cover">
+                </div>
+                <div class="project-content">
+                    <h3>ML Probability Engine (Java)</h3>
+                    <p>Ingests large datasets and computes probability estimates for key outcomes using feature engineering and fast batch processing.</p>
+                    <ul class="project-tags">
+                        <li>Java</li>
+                        <li>Machine Learning</li>
+                        <li>Data Pipelines</li>
+                    </ul>
+                    <div class="project-actions">
+                        <a href="#" class="btn">Case Study</a>
+                        <a href="#" class="btn btn-secondary">Source</a>
+                    </div>
+                </div>
+            </article>
+            <article class="project-card js-reveal">
+                <span class="project-glow"></span>
+                <div class="project-media">
+                    <img src="pictures/cvsitecover.png" alt="Project Two cover placeholder">
+                </div>
+                <div class="project-content">
+                    <h3>Interactive Web Portfolio</h3>
+                    <p>Responsive, animated portfolio interface with smooth scroll, hover effects, and accessible UI components.</p>
+                    <ul class="project-tags">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>UI/UX</li>
+                    </ul>
+                    <div class="project-actions">
+                        <a href="#" class="btn">Live Demo</a>
+                        <a href="#" class="btn btn-secondary">Source</a>
+                    </div>
+                </div>
+            </article>
+            <article class="project-card js-reveal">
+                <span class="project-glow"></span>
+                <div class="project-media">
+                    <img src="pictures/t5vancover.jpg" alt="T5 campervan wiring cover placeholder">
+                </div>
+                <div class="project-content">
+                    <h3>T5 Campervan Wiring</h3>
+                    <p>Designed and installed a complete 12V electrical system in a T5 campervan, including heater pump integration, fused distribution board, and DC transformer. Added a safe 240V campsite hookup with isolation and protection for onboard outlets.</p>
+                    <ul class="project-tags">
+                        <li>12V DC</li>
+                        <li>240V AC</li>
+                        <li>Fuseboard</li>
+                        <li>Heater Pump</li>
+                        <li>Campervan</li>
+                    </ul>
+                    <div class="project-actions">
+                        <a href="#" class="btn">Gallery</a>
+                        <a href="#" class="btn btn-secondary">Wiring Diagram</a>
+                    </div>
+                </div>
+            </article>
         </div>
     </div>
  </div>
@@ -124,6 +174,22 @@
         document.getElementById(tabname).classList.add('active-tab');
                                              
     }    
+
+    // Scroll reveal for project cards
+    const revealItems = document.querySelectorAll('.js-reveal');
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        revealItems.forEach(el => observer.observe(el));
+    } else {
+        revealItems.forEach(el => el.classList.add('in-view'));
+    }
 
 </script>
 
