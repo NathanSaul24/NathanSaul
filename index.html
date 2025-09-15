@@ -12,7 +12,10 @@
     <div class="container">
         <nav>
             <img src="pictures/logo.png" class="Logo">
-            <ul>
+            <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <ul id="primary-nav">
                 <li><a href="#header">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="services.html">Services</a></li>
@@ -35,7 +38,7 @@
             </div>
             <div class="about-column-2">   
                 <h1 class="sub-title">About Me</h1>
-                <p>I am a passionate and driven computer science student currently pursuing my degree at Technological University Dublin (TUDublin), where I am in my third year of study. My academic journey has equipped me with a strong foundation in various programming languages, including C, Python, HTML, and CSS, as well as hands-on experience in networking, supported by multiple Cisco accreditations.
+                <p>I am a passionate and driven computer science student currently pursuing my degree at Technological University Dublin (TUDublin), where I am in my second year of study. My academic journey has equipped me with a strong foundation in various programming languages, including C, Python, HTML, and CSS, as well as hands-on experience in networking, supported by multiple Cisco accreditations.
 
                     Beyond software, I have a keen interest in the hardware aspect of computing. In my spare time, I enjoy troubleshooting, repairing, and upgrading computer components, which has deepened my understanding of how systems operate at both the software and hardware levels.
                     
@@ -206,8 +209,24 @@
         revealItems.forEach(el => el.classList.add('in-view'));
     }
 
+    // Mobile nav toggle
+    const nav = document.querySelector('nav');
+    const toggleBtn = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelectorAll('nav ul li a');
+    if(toggleBtn){
+        toggleBtn.addEventListener('click', () => {
+            const isOpen = nav.classList.toggle('open');
+            toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        navLinks.forEach(a => a.addEventListener('click', () => {
+            if(nav.classList.contains('open')){
+                nav.classList.remove('open');
+                toggleBtn.setAttribute('aria-expanded', 'false');
+            }
+        }));
+    }
+
 </script>
 
 </body>
 </html>
-

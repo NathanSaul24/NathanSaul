@@ -12,7 +12,10 @@
     <div class="container">
         <nav>
             <img src="pictures/logo.png" class="Logo">
-            <ul>
+            <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <ul id="primary-nav">
                 <li><a href="index.html#header">Home</a></li>
                 <li><a href="index.html#about">About</a></li>
                 <li><a href="index.html#services">Services</a></li>
@@ -133,6 +136,23 @@
         revealItems.forEach(el => observer.observe(el));
     } else {
         revealItems.forEach(el => el.classList.add('in-view'));
+    }
+
+    // Mobile nav toggle
+    const nav = document.querySelector('nav');
+    const toggleBtn = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelectorAll('nav ul li a');
+    if(toggleBtn){
+        toggleBtn.addEventListener('click', () => {
+            const isOpen = nav.classList.toggle('open');
+            toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        navLinks.forEach(a => a.addEventListener('click', () => {
+            if(nav.classList.contains('open')){
+                nav.classList.remove('open');
+                toggleBtn.setAttribute('aria-expanded', 'false');
+            }
+        }));
     }
 
     // Ticket modal logic

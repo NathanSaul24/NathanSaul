@@ -70,6 +70,20 @@ nav{
     justify-content: space-between;
     flex-wrap: wrap;
 }
+/* Mobile-only menu toggle, hidden by default */
+.menu-toggle{
+    display: none;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    color: #fff;
+    border-radius: 10px;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.menu-toggle:focus{ outline: 2px solid rgb(255, 87, 88); outline-offset: 2px; }
 nav ul li{
     display: inline-block;
     list-style: none;
@@ -396,6 +410,9 @@ nav ul li a:hover::after{
 .social-icon.gmail:hover{ color: #ea4335; }
 
 @media (max-width: 700px){
+    /* Header image: use dynamic viewport height and top focus to avoid awkward crops */
+    #header{ background-position: top center; height: auto; min-height: 100dvh; }
+
     .social-links{
         grid-template-columns: 1fr;
     }
@@ -424,10 +441,12 @@ nav ul li a:hover::after{
     .header-text h1{ font-size: 36px; }
     .header-text h1 span{ font-size: 36px; }
 
-    /* Stack nav vertically for simple mobile layout */
-    nav{ flex-direction: column; align-items: flex-start; gap: 8px; }
-    nav ul{ width: 100%; }
-    nav ul li{ margin: 8px 10px 0 0; }
+    /* Mobile nav: toggleable menu */
+    .menu-toggle{ display: inline-flex; }
+    nav{ flex-wrap: nowrap; gap: 10px; }
+    nav ul{ display: none; width: 100%; margin-top: 8px; }
+    nav.open ul{ display: block; }
+    nav ul li{ display: block; margin: 10px 0; }
     nav ul li a{ font-size: 18px; }
 
     /* About section stacks columns */
